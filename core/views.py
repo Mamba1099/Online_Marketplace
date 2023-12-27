@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from item.models import Category, Item
 from .forms import SignUpForm   
@@ -16,6 +16,12 @@ def contact(request):
 
 """initialize instance for SignUpForm"""
 def signup(request):
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            
+        return redirect('/login')
     form = SignUpForm()
     
     return render(request, "signup.html", {

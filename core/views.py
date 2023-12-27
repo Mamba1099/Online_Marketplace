@@ -35,8 +35,7 @@ def signup(request):
         'form': form
     })
 """logout and redirect to login"""
-def logout_then_login(request, login_url='login'):
-
+def logout_then_login(request):
     login_url = (settings.LOGIN_URL)
     return LogoutView.as_view(next_page=login_url)(request)
 

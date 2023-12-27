@@ -34,7 +34,7 @@ def signup(request):
     return render(request, 'signup.html', {
         'form': form
     })
-
+"""logout and redirect to login"""
 def logout_then_login(request, login_url='login'):
 
     login_url = (settings.LOGIN_URL)

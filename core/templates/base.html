@@ -9,21 +9,36 @@
         {%block title%}{%endblock%} | puddle</title>
   </head>
   <body>
-    <nav class="py-6 py-6 flex justify-between items-center border-b border-gray-200">
-        <a href="/" class="text-2xl font-semibold">puddle</a>
-        <div>
-          <a href="#" class="text-lg font-semibold hover:text-gray-500">New item</a>
-          <a href="#" class="text-lg font-semibold hover:text-gray-500">Browse</a>
-        {% if request.user.is_authenticated%}
-        <a href="#" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Inbox</a>
-        <a href="#" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Dashboard</a>
-        {%else%}
-          <a href="{% url 'core:signup' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sign Up</a>
-          <a href="{% url 'core:login' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Log in</a>
-        {%endif%}
-
-        </div>
+    <nav class="py-6 px-6 flex justify-between items-center border-b border-gray-200">
+      <a href="/" class="text-xl font-semibold">Puddle</a>
+    
+      <!-- Hamburger button -->
+      <button id="menu-button" class="lg:hidden px-2 py-1">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    
+      <!-- Navigation links -->
+      <div id="menu" class="space-x-6 lg:flex hidden">
+        <a href="{% url 'item:new' %}" class="text-lg font-semibold hover:text-gray-500">New item</a>
+        <a href="{% url 'item:items' %}" class="text-lg font-semibold hover:text-gray-500">Browse</a>
+    
+        {% if request.user.is_authenticated %}
+          <a href="#" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Inbox</a>
+          <a href="{%url 'dashboard:index'%}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Dashboard</a>
+          <a href="{% url 'core:logout' %}" class="px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl hover:bg-red-700">Logout</a>
+        {% else %}
+          <a href="{% url 'core:signup' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sign up</a>
+          <a href="{% url 'core:login' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Log in</a>
+        {% endif %}
+      </div>
     </nav>
+    <script>
+      document.getElementById('menu-button').addEventListener('click', function() {
+        document.getElementById('menu').classList.toggle('hidden');
+      });
+    </script>
     <div class="px-6 px-6">
         {%block content%}
         

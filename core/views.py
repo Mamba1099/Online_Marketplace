@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from item.models import Category, Item
+from .forms import SignUpForm   
 
 
 def index(request):
@@ -12,3 +13,11 @@ def index(request):
 
 def contact(request):
     return render(request, "contact.html")
+
+"""initialize instance for SignUpForm"""
+def signup(request):
+    form = SignUpForm()
+    
+    return render(request, "signup.html", {
+        'form': form 
+})

@@ -68,4 +68,4 @@ def detail(request, pk):
     else:
         form = ConversationMessageForm()
 
-    return render(request, "detail.html", {"conversation": conversation, "form": form})
+    return render(request, "details.html", {"conversation": conversation, "form": form})

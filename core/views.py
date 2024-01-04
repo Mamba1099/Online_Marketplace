@@ -31,7 +31,7 @@ def signup(request):
     else:
         form = SignupForm()
 
-    return render(request, 'signup.html', {
+    return render(request, 'core:signup.html', {
         'form': form
     })
 """logout and redirect to login"""

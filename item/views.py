@@ -97,4 +97,8 @@ def delete(request, pk):
     item = get_object_or_404(Item, pk=pk, created_by=request.user)
     item.delete()
 
+<<<<<<< HEAD
     return redirect('index.html')
+=======
+    return redirect("dashboard:index.html")
+>>>>>>> ddf9c1406f432fbfc47acf6e2f4979c282c1e91c

@@ -81,18 +81,18 @@
 
 #     return redirect('index.html')
 
-from item.serializers import CategorySerialiZer,ItemSerializer
+from item.serializers import CategorySerializer,ItemSerializer
 from item.models import Category,Item
 from rest_framework import generics 
 
 """create a generic class to create the category model view"""
 class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
-    serializer_class = CategorySerialiZer
+    serializer_class = CategorySerializer
 
 class CategoryList(generics.ListCreateAPIView):
     queryset = Category.objects.all()
-    serializer_class = CategorySerialiZer
+    serializer_class = CategorySerializer
 
 """create a generic class to create the Item model view"""
 class ItemDetail(generics.RetrieveUpdateDestroyAPIView):

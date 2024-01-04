@@ -97,26 +97,4 @@ def delete(request, pk):
     item = get_object_or_404(Item, pk=pk, created_by=request.user)
     item.delete()
 
-#     return redirect('index.html')
-
-from item.serializers import CategorySerialiZer,ItemSerializer
-from item.models import Category,Item
-from rest_framework import generics 
-
-"""create a generic class to create the category model view"""
-class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerialiZer
-
-class CategoryList(generics.ListCreateAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerialiZer
-
-"""create a generic class to create the Item model view"""
-class ItemDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Item.objects.all()
-    serializer_class = ItemSerializer
-
-class ItemList(generics.ListCreateAPIView):
-    queryset = Item.objects.all()
-    serializer_class = ItemSerializer    
+    return redirect('index.html')

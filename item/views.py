@@ -81,8 +81,8 @@
 
 #     return redirect('index.html')
 
-from Item.serializers import CategorySerialiZer,ItemSerializer
-from Item.models import Category,Item
+from item.serializers import CategorySerialiZer,ItemSerializer
+from item.models import Category,Item
 from rest_framework import generics 
 
 """create a generic class to create the category model view"""

@@ -29,3 +29,11 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
+
+class User(models.Model):
+    username = models.CharField(max_length=255)
+    email = models.EmailField()
+    password = models.TextField()
+    
+    def __str__(self):
+        return self.username

@@ -1,5 +1,5 @@
-from item.api.serializers import CategorySerializer, ItemSerializer
-from item.models import Category, Item
+from item.api.serializers import CategorySerializer, ItemSerializer,UserSerializer
+from item.models import Category, Item,User
 from rest_framework import generics
 
 
@@ -29,3 +29,16 @@ class ItemList(generics.ListCreateAPIView):
 
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
+    
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UserCreateView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def perform_create(self, serializer):
+        serializer.save()
+        

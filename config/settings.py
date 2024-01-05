@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     "corsheaders",
     # project apps
     "core",
-    "dashboard",
     "conversation",
     "item",
 ]

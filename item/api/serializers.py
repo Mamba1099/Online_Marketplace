@@ -1,4 +1,5 @@
-from item.models import Category,Item,User
+from item.models import Category,Item
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
 class CategorySerializer(serializers.ModelSerializer):
